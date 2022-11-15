@@ -1,38 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f0f0f0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
 .App {
-  text-align: center;
+  background-color: #f0f0f0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.select-color {
+  display: flex;
+  margin: 20px 0;
+  padding: 10px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.select-color .modal {
+  display: none;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.select-color > * {
+  margin: 0 10px;
+}
+.select-color input {
+  padding: 5px 10px;
+  border: 2px solid transparent;
+  outline: none;
+  width: 250px;
+  background-color: #cdcdef;
+}
+.select-color .fa-shuffle {
+  cursor: pointer;
+  font-size: 20px;
+  position: relative;
+  top: 10px;
+}
+.select-color .fa-shuffle span {
+  position: absolute;
+  padding: 5px;
+  font-size: 10px;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.select-color .fa-shuffle:hover span {
+  opacity: 0.7;
+}
+.select-color button {
+  padding: 10px 15px;
+  font-size: large;
+  cursor: pointer;
+  color: white;
+  border: none;
+  background-color: rgb(74, 191, 238);
+}
+.select-color #your-color {
+  position: absolute;
+  right: 50px;
+}
+.select-color #your-color span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+.select-color.error .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.select-color.error .modal .modal-content {
+  min-width: 450px;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  -webkit-animation: modal 0.2s linear;
+          animation: modal 0.2s linear;
+  position: relative;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+.select-color.error .modal .modal-content h1 {
+  font-size: 30px;
+  color: #f00;
+  position: relative;
+  bottom: 20px;
+}
+.select-color.error .modal .modal-content #error-msg {
+  font-weight: bold;
+  font-size: 20px;
+}
+.select-color.error .modal .modal-content #close-modal {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
   color: white;
+  border-radius: 10px;
+  padding: 1px;
+  border: 2px solid rgba(171, 171, 171, 0.5);
+}
+.select-color.error .modal .modal-content #close-modal > * {
+  padding: 10px 30px;
+  background-color: rgb(58, 183, 233);
+  border-radius: 10px;
+}
+@-webkit-keyframes modal {
+  0% {
+    transform: scale(0.95);
+  }
+  33% {
+    transform: scale(1.05);
+  }
+  66% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes modal {
+  0% {
+    transform: scale(0.95);
+  }
+  33% {
+    transform: scale(1.05);
+  }
+  66% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-.App-link {
-  color: #61dafb;
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-auto-rows: 160px;
+  margin: 20px 0;
+  background-color: #f5f5f5;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.color-grid .color-box {
+  transition: transform 0.2s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.color-grid .color-box h5 {
+  position: absolute;
+  bottom: 10%;
+  opacity: 0;
+}
+.color-grid .color-box.copied h5 {
+  opacity: 0.7;
+}
+.color-grid .color-box h6 {
+  position: absolute;
+  bottom: 30%;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+.color-grid .color-box:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+.color-grid .color-box:hover h6 {
+  opacity: 0.7;
+}/*# sourceMappingURL=App.css.map */
